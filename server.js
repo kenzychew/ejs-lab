@@ -48,7 +48,7 @@ const RESTAURANT = {
         details: 'Crispy and lightly seasoned string bean fries, served in a pattern for a fun twist.'
       }
     ]
-  }
+  };
 
 app.get('/', (req, res) => {
   res.render('home.ejs', { restaurant: RESTAURANT })
@@ -57,7 +57,7 @@ app.get('/', (req, res) => {
 app.get('/menu', (req, res) => {
     res.render('menu.ejs', {
         restaurant: RESTAURANT,
-        menu: RESTAURANT.menu    
+        menu: RESTAURANT.menu 
     })
 });
 
@@ -65,7 +65,7 @@ app.get('/menu/:category', (req, res) => {
     const { category } = req.params;
     res.render('category.ejs', {
         menuItems: RESTAURANT.menu.filter(item => item.category === category),
-        category: category
+        category: category[0].toUpperCase() + category.slice(1)
      });
 });
 
